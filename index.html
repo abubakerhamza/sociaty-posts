@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PopViral Posts</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0a0a0a;color:#f5f0e6;font-family:Georgia,'Times New Roman',serif;padding:16px 12px 40px}
+.wrap{max-width:760px;margin:0 auto}
+header{text-align:center;padding:18px 0 8px}
+h1{color:#e8c85a;font-size:30px;letter-spacing:2px;font-weight:bold}
+.sub{color:#b8ab8a;font-size:14px;margin-top:4px;letter-spacing:1px}
+.pill{display:inline-block;margin-top:12px;background:#1c1a14;border:1px solid #e8c85a;color:#e8c85a;border-radius:999px;padding:5px 16px;font-size:14px}
+.card{background:#141310;border:1px solid #2c2a24;border-radius:14px;padding:14px;margin:16px 0}
+.card img.post{width:100%;height:auto;display:block;border-radius:10px}
+.pid{color:#e8c85a;font-size:13px;letter-spacing:2px;margin-bottom:8px}
+.headline{font-size:17px;line-height:1.45;margin:10px 0 6px}
+.fbtitle{color:#cfc39f;font-size:14px;line-height:1.5;margin:6px 0}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+button{background:#23211b;color:#f5f0e6;border:1px solid #4a463c;border-radius:8px;padding:9px 13px;font-size:14px;cursor:pointer;font-family:inherit}
+button:active{opacity:.75}
+button.gold{border-color:#e8c85a;color:#e8c85a}
+button.del{border-color:#7a2020;color:#e88a8a}
+button.armed{background:#7a2020;color:#fff;border-color:#7a2020}
+.caption{display:none;background:#0d0c0a;border:1px solid #2c2a24;border-radius:8px;padding:12px;margin-top:10px;white-space:pre-wrap;font-size:15px;line-height:1.6}
+.caption.open{display:block}
+.research{display:none;background:#0d0c0a;border:1px solid #2c2a24;border-radius:8px;padding:12px;margin-top:10px;font-size:13px;line-height:1.6;color:#b8ab8a;white-space:pre-wrap}
+.research.open{display:block}
+.donebadge{color:#8fce8f;font-size:13px;margin-left:8px}
+h2.sec{color:#e8c85a;font-size:20px;margin:26px 0 4px;letter-spacing:1px}
+footer{text-align:center;color:#8a8069;font-size:14px;margin-top:34px}
+#toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);background:#e8c85a;color:#111;padding:10px 20px;border-radius:999px;font-size:15px;display:none;z-index:9}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<h1>PopViral Posts</h1>
+<div class="sub">Viral moments, entertainment and pop culture</div>
+<div><span class="pill" id="progress"></span></div>
+</header>
+<div id="list"></div>
+<div id="donewrap" style="display:none"><h2 class="sec">Completed</h2><div id="donelist"></div></div>
+<footer>Powered by Muhammad Abubaker Hamza</footer>
+</div>
+<div id="toast"></div>
+<script>
+const POSTS = [{"id": "S-01", "headline": "THE WIDE EYED CAT IS THE ONE IN HUNTING MODE, NOT THE ANGRY LOOKING ONE", "caption": "Wide, round pupils are a cat's hunting and play face. Vets say the pupils blow wide when a cat locks onto prey, a toy, or anything that gets it excited.\nThe narrowed, angry looking stare is usually the calmer face of the two.\nDoes your cat's wide eyed look fool you too?", "title": "Wide Eyes Mean Hunting Mode On #Cats #CatFacts #PetLovers", "research": "Source Sociaty post: Instagram, 15 Jun 2026, 262,331 likes, 1,860 comments, the biggest post in the study. Verified: veterinary sources (Pumpkin vet guide, Catster, WebVet) confirm wide dilated pupils are the hunting and play response in cats.", "file": "post-01.png"}, {"id": "S-02", "headline": "DOGS ARE NOW LEGALLY CONSIDERED IMMEDIATE FAMILY IN NEW YORK", "caption": "A Brooklyn judge has ruled that a dog can count as immediate family in court. In the case of Duke the dachshund, Justice Aaron Maslow said Duke's family could claim emotional distress damages after watching him get hit by a car on his leash.\nIt is one judge's ruling in one case, not a new law for everyone, but it is a first for New York.\nDo you think dogs should legally count as family?", "title": "New York Court Calls Dogs Family #Dogs #NewYork #DogLovers", "research": "Source Sociaty post: Instagram, 15 Feb 2026, 140K likes, 1.7K comments. Verified: DeBlase v. Hill, Kings County Supreme Court, Justice Aaron Maslow, June 2025. One judge's ruling in one case, not a statewide law; the caption says so.", "file": "post-02.png"}, {"id": "S-03", "headline": "COUPLES WHO SHARE SMALL UPDATES ALL DAY LONG ARE HAPPIER, STUDY FINDS", "caption": "It is not the big talks that hold a couple together. Research on couples found that frequent, responsive little messages through the day go together with higher relationship satisfaction, especially for couples who live apart.\nThe small updates tell your partner they are still part of your day.\nDo you and your partner text the little things?", "title": "Small Daily Texts Keep Couples Happier #Relationships #Couples #LoveFacts", "research": "Source Sociaty post: Facebook, 27 Jan 2026, 4.5K likes, 400 comments. Verified: Holtzman et al. 2021, Journal of Social and Personal Relationships, plus the Langlais et al. daily-diary texting study. NOTE: this slot replaced the Henry Cavill quote card (Instagram, 260K likes, 13K comments) because that quote is fabricated, no credible source exists.", "file": "post-03.png"}, {"id": "S-04", "headline": "JOHN TRAVOLTA STUNS AT 71, LOOKING HALF HIS AGE", "caption": "Born on 18 February 1954, John Travolta is 71, and in June 2025 he stunned a Grease sing-along crowd in Los Angeles by walking on stage dressed as Danny Zuko, 47 years after the film.\nFans said the T-Bird still looked half his age.\nDoes he still have the Danny Zuko magic?", "title": "Travolta At 71 Stuns Grease Fans #JohnTravolta #Grease #Hollywood", "research": "Source Sociaty post: Instagram, 30 Jan 2026, 48K likes, 2.4K comments. Verified: Travolta born 18 Feb 1954; AARP (3 Jul 2025) and New Idea confirm his June 2025 Hollywood Bowl Danny Zuko appearance at 71.", "file": "post-04.png"}, {"id": "S-05", "headline": "SINGLE WOMEN ARE HAPPIER THAN SINGLE MEN, STUDY SAYS", "caption": "University of Toronto researchers studied nearly 6,000 single adults and found that single women are, on average, happier than single men.\nThey were more satisfied with their single status and their lives, and they wanted a partner less.\nDo you think women really enjoy single life more?", "title": "Single Women Happier Than Single Men #SingleLife #Relationships #StudyFinds", "research": "Source Sociaty post: Instagram, 15 Dec 2024, 29K likes, 780 comments. Verified: Hoan and MacDonald, University of Toronto, Social Psychological and Personality Science, 2024, 5,941 single adults.", "file": "post-05.png"}, {"id": "S-06", "headline": "ADULTS WHO TAKE DAYTIME NAPS COULD HAVE BIGGER BRAINS", "caption": "A study led by UCL and the University of the Republic in Uruguay found that people built to nap had a larger total brain volume.\nThe difference was equal to about 2.6 to 6.5 years less brain ageing.\nAre you a proud daytime napper?", "title": "Daytime Naps Linked To Bigger Brains #BrainHealth #Sleep #ScienceNews", "research": "Source Sociaty post: Instagram, 1 Feb 2025, 22K likes, 100 comments. Verified: Paz, Dashti and Garfield, Sleep Health, June 2023, UCL and University of the Republic Uruguay. Habitual nappers had larger brain volume, equal to 2.6 to 6.5 years less ageing.", "file": "post-06.png"}, {"id": "S-07", "headline": "ANIMALS GET GRUMPIER AS THEY AGE, JUST LIKE HUMANS DO", "caption": "A 2024 series of studies on monkeys, birds, deer and even insects found the same pattern almost everywhere: animals grow less social as they age.\nOlder animals keep a smaller circle and give the drama a miss, just like us.\nDoes your pet get grumpier with age?", "title": "Animals Get Grumpier As They Age #Animals #Pets #ScienceNews", "research": "Source Sociaty post: Instagram, 18 Jul 2025, 20K likes, 68 comments. Verified: 2024 special issue of Philosophical Transactions of the Royal Society B on social ageing in animals, 16 studies across species.", "file": "post-07.png"}, {"id": "S-08", "headline": "FRANCE HAS OFFICIALLY BANNED WILD ANIMALS IN CIRCUSES", "caption": "France passed its animal welfare law in November 2021, and buying and breeding wild animals for travelling circuses has been banned since 2023.\nKeeping and performing with them ends completely by December 2028.\nDo you think every country should do the same?", "title": "France Bans Wild Animals In Circuses #France #AnimalRights #Circus", "research": "Source Sociaty post: Facebook, 15 Feb 2026, 19K likes, 200 comments, the biggest Facebook post in the study. Verified: French Law 2021-1539 of 30 Nov 2021. Buying and breeding banned since 2023, keeping and performing ends fully by December 2028; the caption states the timeline.", "file": "post-08.png"}, {"id": "S-09", "headline": "IN 1970, 91% OF WOMEN WERE MARRIED BY AGE 30. TODAY IT IS ONLY 32%", "caption": "In the early 1970s, almost every woman was married by the age of 30.\nToday only around one in three women has married by 30, as education and careers come first.\nIs marrying later a smart choice, or is something being lost?", "title": "Marriage By Thirty Is Disappearing Fast #Marriage #Women #Society", "research": "Source Sociaty post: Instagram, 11 Nov 2025, 17K likes, 650 comments. Verified: UK Office for National Statistics blog, 1 Apr 2019, 91 percent of women married by 30 in the mid 1970s, now about a third.", "file": "post-09.png"}, {"id": "S-10", "headline": "GETTING ANGRY AT THE SOUND OF OTHERS EATING OR BREATHING IS A REAL DISORDER CALLED MISOPHONIA", "caption": "For people with misophonia, everyday sounds like chewing, slurping or heavy breathing can trigger real anger and distress.\nDoctors describe it as a sound tolerance disorder, and it may affect as many as 1 in 5 people.\nIs there a sound that instantly makes you angry?", "title": "This Sound Disorder Makes Chewing Unbearable #Misophonia #Health #Mind", "research": "Source Sociaty post: Instagram, 30 May 2025, 16K likes, 200 comments. Verified: Cleveland Clinic, misophonia is a disorder of decreased tolerance to specific sounds such as eating and breathing; may affect about 1 in 5 people.", "file": "post-10.png"}, {"id": "S-11", "headline": "GEN Z IS NOW LESS INTELLIGENT THAN MILLENNIALS IN THE FIRST RECORDED IQ DROP", "caption": "Northwestern University researchers analysed test scores from nearly 400,000 American adults collected between 2006 and 2018.\nScores fell in verbal reasoning, matrix reasoning and letter-and-number problems, while spatial reasoning actually improved, and the researchers themselves warn that lower scores do not prove people are less intelligent.\nWhy do you think test scores are falling?", "title": "Test Scores Fall First Time Ever #GenZ #IQ #Education", "research": "Source Sociaty post: Facebook, 8 Feb 2026, 5,353 likes, 875 comments. Verified: Dworak et al., Northwestern University, Intelligence 2023, 394,378 US adults. Scores fell in three domains and rose in one; the caption carries the honest scope.", "file": "post-11.png"}, {"id": "S-12", "headline": "BY 2030, NEARLY HALF OF WOMEN AGED 25 TO 44 WILL BE SINGLE AND CHILD FREE", "caption": "Morgan Stanley forecasts that by 2030, 45% of American women aged 25 to 44 will be single, the largest share in history.\nIt is a forecast, not a fact, and it is driven by women delaying marriage, focusing on careers and having children later or not at all.\nDo you think this is where society is really heading?", "title": "Nearly Half Of Women Single Soon #Women #2030 #Society", "research": "Source Sociaty post: Facebook, 10 Mar 2026, 2.8K likes, 2.2K comments, the comment champion of the study. Verified: Morgan Stanley Rise of the SHEconomy forecast, 2019, 45 percent of US women 25 to 44 single by 2030. It is a forecast and the source does not forecast child free; the caption says so.", "file": "post-12.png"}, {"id": "S-13", "headline": "ROBERT PATTINSON IS OFFICIALLY THE NEW JAMES BOND", "caption": "Amazon MGM Studios announced it on Monday 16 November: Robert Pattinson, 40, is officially the new James Bond. The studio posted a first-look photo of him in Bond's signature tuxedo with the words \"Identity confirmed\".\nHe becomes the seventh actor to play 007, taking over from Daniel Craig. The next film, Bond 26, will be directed by Denis Villeneuve, with no release date announced yet.\nIs Pattinson the right pick for 007?", "title": "Pattinson Is The New James Bond #JamesBond #RobertPattinson #007", "research": "Source Sociaty post: Facebook, 16 Nov 2026, 9.4K reactions, 432 comments, 606 shares; Instagram, 16 Nov 2026, 5.1K likes, 224 comments. Verified: Amazon MGM Studios announced the casting on 16 Nov 2026 (Al Jazeera, USA Today, The National). Pattinson, 40, is the seventh actor to play 007, succeeding Daniel Craig; Bond 26 is directed by Denis Villeneuve.", "file": "post-13.png"}, {"id": "S-14", "headline": "SCHWARZENEGGER WARNS KIDS TODAY WILL BECOME A GENERATION OF WIMPS IF NOT TOUGHENED UP", "caption": "In a 2023 interview on the Howard Stern Show, Arnold Schwarzenegger warned parents not to over-baby their kids. He said people only grow strong through resistance, failure and hard work, and must learn to accept pain, misery and discomfort.\n\"Don't start creating a generation of wimps and weak people,\" he said, adding that anyone who tries to baby themselves will never get there.\nDo you agree with Arnold, or is he being too harsh?", "title": "Arnold Warns Against Raising Wimps Kids #ArnoldSchwarzenegger #ToughLove #Parenting", "research": "Source Sociaty post: Facebook, 15 Nov 2026, 4.7K reactions, 582 comments, 590 shares. Verified: the words are real, from Schwarzenegger's Howard Stern Show interview in October 2023 while promoting 'Be Useful' (TheWrap, JoBlo, Bored Panda). NOT a new statement; the caption dates it to 2023 plainly.", "file": "post-14.png"}, {"id": "S-15", "headline": "DJ KHALED LOOKS UNRECOGNIZABLE AFTER LOSING 75 POUNDS", "caption": "DJ Khaled has lost 75 pounds in a year on Wegovy, about 25% of his body weight. He started at 295 to 300 pounds and now weighs 200 to 212, with a goal of 200.\nHis routine is simple: walk, golf, and Wegovy, after a talk with his doctor. He says he did it for his kids and his family, and that his own results are personal.\nWhat do you think of his new look?", "title": "Khaled Drops 75 Pounds With Wegovy #DJKhaled #WeightLoss #Wegovy", "research": "Source Sociaty post: Facebook, 20 Nov 2026, 8.5K reactions, 1K comments, 399 shares. Verified: Novo Nordisk, 12 Nov 2026 - Khaled lost 75 pounds on Wegovy in a year, about 25% of his body weight; People: started 295-300 lbs, now 200-212 lbs, goal 200 lbs. His own account, part of a Novo Nordisk campaign; the caption says so.", "file": "post-15.png"}, {"id": "S-16", "headline": "JUST REALIZED EVERY CHRISTOPHER NOLAN FILM IS ABOUT GETTING HOME TO ANNE HATHAWAY", "caption": "Fans are joking that Christopher Nolan keeps making the same film with a bigger budget. A hero crosses space, war, or monsters, and in the end it is all about getting back to Anne Hathaway.\nShe has now worked with Nolan three times: The Dark Knight Rises in 2012, Interstellar in 2014, and The Odyssey in 2026, where she plays Penelope, the wife waiting for Odysseus to come home.\nWould you go through all that for Anne Hathaway?", "title": "Every Nolan Film Leads To Hathaway #ChristopherNolan #AnneHathaway #TheOdyssey", "research": "Source Sociaty post: Facebook, 19 Nov 2026, 7K reactions, 317 comments, 251 shares. Verified: Hathaway's third Nolan film after The Dark Knight Rises (2012) and Interstellar (2014); in The Odyssey (2026) she plays Penelope, waiting for Odysseus to come home (People, USA Today). The post is a fan joke, not a claim about Nolan's intent.", "file": "post-16.png"}, {"id": "S-17", "headline": "NEW POLL SHOWS GEN Z VIEWS SOCIALISM MORE POSITIVELY THAN CAPITALISM", "caption": "A 2018 Gallup poll found 51% of young Americans aged 18 to 29 viewed socialism positively, against 45% for capitalism. Back in 2010, 68% of that age group viewed capitalism positively, so the shift is real.\nNewer polls show the same pattern among Gen Z. Experts say rising living costs and the struggle to afford a home play a big part, while many young people use socialism to mean policies like free healthcare or college.\nWhich system do you prefer?", "title": "Gen Z Prefers Socialism Over Capitalism #GenZ #Socialism #Capitalism", "research": "Source Sociaty post: Facebook, 19 Nov 2026, 1.7K reactions, 1.6K comments, 134 shares. Verified: Gallup, August 2018 - 51% of Americans aged 18-29 viewed socialism positively vs 45% capitalism (68% viewed capitalism positively in 2010). Newer polls show the same pattern; the caption anchors the numbers to Gallup and notes the word means different things to different young people.", "file": "post-17.png"}, {"id": "S-18", "headline": "DANIEL RADCLIFFE IS NOW 37, THE SAME AGE HARRY WAS IN THE FINAL SCENE", "caption": "Daniel Radcliffe is now 37, which is exactly how old Harry Potter was in the final scene of the series. In the 19 years later epilogue, Harry stands at King's Cross sending his own kids off to Hogwarts.\nWhen that scene was filmed, Radcliffe was only around 20 and needed makeup and prosthetics to look older. Now, years later, he is actually that age in real life.\nFeel old?", "title": "Radcliffe Is Now Harry's Epilogue Age #DanielRadcliffe #HarryPotter #HarryPotter", "research": "Source Sociaty post: Instagram, 19 Nov 2026, 11.4K likes, 50 comments. Verified: Radcliffe born 23 July 1989, turned 37 in July 2026; Harry was 37 in the Deathly Hallows epilogue, set in September 2017 (ScreenRant). When the scene was filmed Radcliffe was around 20 and was aged up with prosthetics.", "file": "post-18.png"}, {"id": "S-19", "headline": "PEOPLE WITH HIGHER IQ PREFER CATS AS PETS, STUDY SAYS", "caption": "A study of 600 students at Carroll University found that people who prefer cats scored higher on intelligence tests than people who prefer dogs. Cat lovers also came out as more open-minded, sensitive and independent, while dog lovers were livelier and more outgoing.\nA later study of 418 students found the same pattern, with cat people scoring higher on reasoning and general intelligence.\nAre you a cat person or a dog person?", "title": "Higher IQ People Prefer Cats #Cats #CatLovers #IQ", "research": "Source Sociaty post: Instagram, 20 Nov 2026, 14,358 likes (collaboration with studysays). Below the 20K IG guide, but top IG post of the window at 2.5x the next IG post (5,709) - same judgment as S-18 Radcliffe on 21 Nov. Verified: Carroll University study, Denise Guastello, presented at the Association for Psychological Science meeting May 2014 - 600 students, cat lovers scored higher on intelligence tests; 2017 paper (Univ. of Florida, Carroll, Marquette), 418 students, same pattern. Headline drops Sociaty's word NEW: the study is from 2014, not new.", "file": "post-19.png"}];
+const KEY = 'sociaty-posts-site-v1';
+let state = {done:{}, deleted:{}, counts:{}};
+try{ const s = localStorage.getItem(KEY); if(s){ state = Object.assign(state, JSON.parse(s)); } }catch(e){}
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
+function toast(msg){ const t=document.getElementById('toast'); t.textContent=msg; t.style.display='block'; setTimeout(()=>{t.style.display='none';},1600); }
+function copyText(text, btn, doneLabel){
+  function ok(){ if(btn){ const o=btn.textContent; btn.textContent=doneLabel; setTimeout(()=>{btn.textContent=o;},1500);} toast('Copied'); }
+  if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(text).then(ok).catch(()=>{ fallback(); }); } else { fallback(); }
+  function fallback(){ const ta=document.createElement('textarea'); ta.value=text; ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta); ta.select(); try{ document.execCommand('copy'); ok(); }catch(e){ toast('Copy failed'); } document.body.removeChild(ta); }
+}
+function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
+function render(){
+  const list=document.getElementById('list'), dl=document.getElementById('donelist');
+  list.innerHTML=''; dl.innerHTML='';
+  let doneCount=0, total=0;
+  POSTS.forEach(p=>{
+    if(state.deleted[p.id]) return;
+    total++;
+    const isDone = !!state.done[p.id];
+    if(isDone) doneCount++;
+    const card=document.createElement('div'); card.className='card';
+    const cnt = state.counts[p.id]||0;
+    card.innerHTML =
+      '<div class="pid">'+p.id+(isDone?'<span class="donebadge">Completed</span>':'')+'</div>'+
+      '<img class="post" src="'+p.file+'" alt="">'+
+      '<div class="headline">'+esc(p.headline)+'</div>'+
+      '<div class="fbtitle">'+esc(p.title)+'</div>'+
+      '<div class="btns">'+
+      '<button class="gold" data-a="dl">Download Photo</button>'+
+      '<button data-a="ct">Copy Title</button>'+
+      '<button data-a="cc">Copy Caption'+(cnt?' ('+cnt+')':'')+'</button>'+
+      '<button data-a="sc">Show Caption</button>'+
+      '<button data-a="rs">Research</button>'+
+      (isDone?'<button data-a="undo">Undo</button>':'<button data-a="done">Complete</button>')+
+      '<button class="del" data-a="del">Delete</button>'+
+      '</div>'+
+      '<div class="caption">'+esc(p.caption)+'</div>'+
+      '<div class="research">'+esc(p.research)+'</div>';
+    card.querySelectorAll('button').forEach(b=>{
+      b.addEventListener('click', ()=>{
+        const a=b.getAttribute('data-a');
+        if(a==='dl'){
+          fetch(p.file).then(r=>r.blob()).then(blob=>{
+            const url=URL.createObjectURL(blob); const aEl=document.createElement('a');
+            aEl.href=url; aEl.download=p.file; document.body.appendChild(aEl); aEl.click(); aEl.remove();
+            setTimeout(()=>URL.revokeObjectURL(url),4000); toast('Downloading');
+          }).catch(()=>{ toast('Download failed'); });
+        }
+        if(a==='ct'){ copyText(p.title, b, 'Title Copied'); }
+        if(a==='cc'){ state.counts[p.id]=(state.counts[p.id]||0)+1; save(); copyText(p.caption, b, 'Caption Copied'); render(); }
+        if(a==='sc'){ const c=card.querySelector('.caption'); c.classList.toggle('open'); b.textContent=c.classList.contains('open')?'Hide Caption':'Show Caption'; }
+        if(a==='rs'){ const r=card.querySelector('.research'); r.classList.toggle('open'); }
+        if(a==='done'){ state.done[p.id]=1; save(); render(); }
+        if(a==='undo'){ delete state.done[p.id]; save(); render(); }
+        if(a==='del'){
+          if(b.classList.contains('armed')){ state.deleted[p.id]=1; delete state.done[p.id]; save(); render(); }
+          else { b.classList.add('armed'); b.textContent='Tap again to delete'; setTimeout(()=>{ b.classList.remove('armed'); b.textContent='Delete'; },2600); }
+        }
+      });
+    });
+    (isDone?dl:list).appendChild(card);
+  });
+  document.getElementById('donewrap').style.display = doneCount? 'block':'none';
+  document.getElementById('progress').textContent = doneCount+' of '+total+' posted';
+}
+render();
+</script>
+</body>
+</html>
